@@ -1,0 +1,17 @@
+@import '../style/color.scss';
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  background-color: $primary-color;
+}
+
+.footer-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

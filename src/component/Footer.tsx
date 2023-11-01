@@ -1,4 +1,5 @@
 import '../index.css';
+import './footer.scss';
 
 export default function Footer() {
   return (

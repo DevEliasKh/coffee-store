@@ -1,5 +1,5 @@
 import '../index.css';
-
+import './header.scss';
 export default function Header() {
   return (
     <nav className="navBar">

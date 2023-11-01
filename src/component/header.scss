@@ -1,0 +1,30 @@
+@import '../style/color.scss';
+
+.navBar {
+  background-color: #ddb892;
+  width: 100%;
+  padding: 0.3rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+}
+
+.item {
+  color: white;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  text-align: center;
+  width: 20px;
+  font-size: 14px;
+  margin: 0 auto;
+}
