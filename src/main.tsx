@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App.tsx';
+import Home from './Home.tsx';
 import AboutUs from './pages/AboutUs.tsx';
 import Store from './pages/Store.tsx';
 import Header from './component/Header.tsx';
@@ -11,7 +11,7 @@ import './index.css';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />
+    element: <Home />
   },
   {
     path: '/store',
