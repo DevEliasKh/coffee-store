@@ -1,0 +1,29 @@
+@import 'src/style/color.scss';
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .btns {
+    padding: 1rem 0;
+    .btn {
+      align-self: start;
+      font-size: 24px;
+      box-sizing: border-box;
+      margin: 1rem 7.5rem;
+      background-color: $primary-color;
+      border-radius: 8px;
+      border: 2px solid $primary-color;
+      padding: 0.5rem 1rem;
+      &:hover {
+        border: 2px solid var(--secondary-color);
+      }
+    }
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
