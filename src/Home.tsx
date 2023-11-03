@@ -1,30 +1,40 @@
-import { useState } from 'react';
-import viteLogo from '/vite.svg';
-import './App.css';
+import './Home.scss';
+
+import ProductCard from './component/ProductCard';
+import productList from '/src/data/products.json';
 
 function Home() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
+    <div className="container">
+      <div className="big-image">
+        <img src="src/assets/bg.jpg" alt="coffee" />
+        <a href="/store">Shop Now!</a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+      {productList.map(({ type, list }) => {
+        return (
+          //   const { type, list } = productList;
+          <div className="cardList">
+            <button className="button" value={type}>
+              {type}
+            </button>
+            <div className="cards">
+              {list.map((product) => {
+                return (
+                  <ProductCard
+                    product={product}
+                    productUrl={`/${type}/${product.id}`}
+                  />
+                );
+              })}
+            </div>
+            <button className="showMoreBtn button">
+              <a href="/store">Show More {'>>'}</a>
+            </button>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 

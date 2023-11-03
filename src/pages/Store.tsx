@@ -27,7 +27,10 @@ export default function Store() {
       <div className="cardList">
         <div className="cards">
           {products.map((product) => (
-            <ProductCard product={product} productUrl={'/#'} />
+            <ProductCard
+              product={product}
+              productUrl={`/${type}/${product.id}`}
+            />
           ))}
         </div>
       </div>
