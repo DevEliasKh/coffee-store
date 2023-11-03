@@ -1,6 +1,7 @@
 import './Store.scss';
 
 import ProductCard from '../component/ProductCard.tsx';
+import productList from '/src/data/products.json';
 
 export default function Store() {
   const data = {
@@ -13,6 +14,8 @@ export default function Store() {
       'Lucaffé Mamma Lucia is ideal for morning coffee moments. This sweet coffee works perfectly in milk coffees, such as in your cappuccino and caffè latte. The coffee gives a rich crema.The blend consists of 40 % Arabica and 60 % Robusta beans. For a quick start in the morning!'
   };
   function handleClick() {}
+
+  productList.map((p: string) => p.type == 'Coffee' && console.log(p.list));
   return (
     <div className="container">
       <div className="btns">
@@ -28,7 +31,7 @@ export default function Store() {
       </div>
       <div className="cardList">
         <div className="cards">
-          <ProductCard product={data} productUrl={'#/'} />
+          <ProductCard product={data} productUrl={'/#'} />
           {/* {#each productList as product}
         <ProductCard {product} onClick={() => addToCart(product)} productUrl="/product/{type}/{product.id}" />
       {/each} */}
