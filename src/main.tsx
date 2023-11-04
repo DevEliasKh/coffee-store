@@ -6,6 +6,8 @@ import AboutUs from './pages/AboutUs.tsx';
 import Store from './pages/Store.tsx';
 import Header from './component/Header.tsx';
 import Footer from './component/Footer.tsx';
+import CartProvider from './context/CartProvider.tsx';
+import Cart from './pages/Cart.tsx';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -20,12 +22,18 @@ const router = createBrowserRouter([
   {
     path: '/aboutUs',
     element: <AboutUs />
+  },
+  {
+    path: '/cart',
+    element: <Cart />
   }
 ]);
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Header />
-    <RouterProvider router={router} />
-    <Footer />
+    <CartProvider>
+      <Header />
+      <RouterProvider router={router} />
+      <Footer />
+    </CartProvider>
   </React.StrictMode>
 );
