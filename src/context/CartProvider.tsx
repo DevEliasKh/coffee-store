@@ -1,18 +1,20 @@
-import { useState, useMemo, useEffect, createContext } from 'react';
+import { useState, useEffect } from 'react';
 
-const CartContext = createContext([]);
+import CartContext from './CartContext';
 function CartProvider({ children }) {
-  const [cart, setCart] = useState(
+  const [cart, UpdateCart] = useState(
     JSON.parse(localStorage.getItem('CartItem')) || []
   );
-
-  const value = useMemo(() => [cart, setCart], [cart]);
 
   useEffect(() => {
     localStorage.setItem('CartItem', JSON.stringify(cart));
   }, [cart]);
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={{ cart, UpdateCart }}>
+      {children}
+    </CartContext.Provider>
+  );
 }
 
 CartProvider.defaultProps = {

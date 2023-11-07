@@ -14,7 +14,7 @@ function Home() {
       {productList.map(({ type, list }) => {
         return (
           //   const { type, list } = productList;
-          <div className="cardList">
+          <div className="cardList" key={type}>
             <button className="button" value={type}>
               {type}
             </button>
