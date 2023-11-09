@@ -1,7 +1,7 @@
 import './ProductCard.scss';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import useCartContext from '/src/context/CartContext.ts';
+import useCartContext from '../context/CartContext.ts';
 
 interface Product {
   id: string;
@@ -17,11 +17,10 @@ interface Props {
 }
 
 export default function ProductCard(props: Props) {
-  const { cart, UpdateCart } = useContext(useCartContext);
+  const { Cart, UpdateCart } = useContext(useCartContext);
   const id = props.product.id;
-  //   console.log(cart, id);
   function clickHandler() {
-    UpdateCart([...cart, id]);
+    UpdateCart([...Cart, id]);
   }
   return (
     <div className="card" key={props.product.id}>

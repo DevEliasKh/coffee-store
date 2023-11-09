@@ -1,7 +1,7 @@
 import './Store.scss';
 import { useState } from 'react';
 import ProductCard from '../component/ProductCard.tsx';
-import productList from '/src/data/products.json';
+import productList from '../data/products.json';
 import type { Product, ProductGroup } from '../model/product.ts';
 
 export default function Store() {
