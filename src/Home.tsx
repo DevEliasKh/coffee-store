@@ -2,6 +2,7 @@ import './Home.scss';
 
 import ProductCard from './component/ProductCard';
 import productList from '/src/data/products.json';
+import type { Product, ProductGroup } from '/src/model/product.ts';
 
 function Home() {
   return (
@@ -11,7 +12,7 @@ function Home() {
         <a href="/store">Shop Now!</a>
       </div>
 
-      {productList.map(({ type, list }) => {
+      {productList.map(({ type, list }: ProductGroup) => {
         return (
           //   const { type, list } = productList;
           <div className="cardList" key={type}>
@@ -19,9 +20,10 @@ function Home() {
               {type}
             </button>
             <div className="cards">
-              {list.map((product) => {
+              {list.map((product: Product) => {
                 return (
                   <ProductCard
+                    key={product.id}
                     product={product}
                     productUrl={`/${type}/${product.id}`}
                   />

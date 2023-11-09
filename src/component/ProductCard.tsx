@@ -1,6 +1,6 @@
 import './ProductCard.scss';
 import { useContext } from 'react';
-
+import { Link } from 'react-router-dom';
 import useCartContext from '/src/context/CartContext.ts';
 
 interface Product {
@@ -25,12 +25,12 @@ export default function ProductCard(props: Props) {
   }
   return (
     <div className="card" key={props.product.id}>
-      <a href={props.productUrl} className="info">
+      <Link to={props.productUrl} className="info">
         <img src={props.product.imageSrc} alt={props.product.name} />
         <div className="name">{props.product.name}</div>
         <div className="price">${props.product.price}</div>
         <p className="description">{props.product.description}</p>
-      </a>
+      </Link>
       {/* the click event will be passed up to the parent */}
       <button
         onClick={() => {

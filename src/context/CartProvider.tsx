@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 
 import CartContext from './CartContext';
-function CartProvider({ children }) {
-  const [cart, UpdateCart] = useState(
-    JSON.parse(localStorage.getItem('CartItem')) || []
+function CartProvider({ children }: { children: JSX.Element[] }) {
+  const [Cart, UpdateCart] = useState(
+    JSON.parse(localStorage.getItem('CartItem') || '[]')
   );
 
   useEffect(() => {
-    localStorage.setItem('CartItem', JSON.stringify(cart));
-  }, [cart]);
+    localStorage.setItem('CartItem', JSON.stringify(Cart));
+  }, [Cart]);
 
   return (
-    <CartContext.Provider value={{ cart, UpdateCart }}>
+    <CartContext.Provider value={{ Cart, UpdateCart }}>
       {children}
     </CartContext.Provider>
   );

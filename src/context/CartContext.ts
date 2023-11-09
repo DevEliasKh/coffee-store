@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 
 const CartContext = createContext({
-  Cart: [],
+  Cart: [] as string[],
   UpdateCart: () => {}
 });
 
