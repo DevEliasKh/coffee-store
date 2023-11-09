@@ -8,7 +8,7 @@ import Header from './component/Header.tsx';
 import Footer from './component/Footer.tsx';
 import CartProvider from './context/CartProvider.tsx';
 import Cart from './pages/Cart.tsx';
-import Product from './pages/Product.tsx';
+import ProductPage from './pages/Product.tsx';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/:type/:id',
-    element: <Product />
+    element: <ProductPage />
   }
 ]);
 ReactDOM.createRoot(document.getElementById('root')!).render(
