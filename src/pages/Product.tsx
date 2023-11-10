@@ -1,12 +1,17 @@
 import { useParams } from 'react-router-dom';
 import productList from '../data/products.json';
 import './Product.scss';
+import useCartContext from '../context/CartContext.ts';
+import { useContext } from 'react';
 
-const AllProduct = productList.flatMap((group) => group.list);
 export default function ProductPage() {
   const { id } = useParams();
+  const AllProduct = productList.flatMap((group) => group.list);
   const product = AllProduct.find((Element) => Element.id === id);
-  function clickHandler() {}
+  const { Cart, UpdateCart } = useContext(useCartContext);
+  function clickHandler() {
+    UpdateCart([...Cart, id]);
+  }
   if (product) {
     return (
       <div className="containerProduct">

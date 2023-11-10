@@ -1,8 +1,8 @@
 import './Home.scss';
 
-import ProductCard from './component/ProductCard';
-import productList from './data/products.json';
-import type { Product, ProductGroup } from './model/product.ts';
+import ProductCard from '../component/ProductCard.tsx';
+import productList from '../data/products.json';
+import type { Product, ProductGroup } from '../model/product.ts';
 
 function Home() {
   return (
