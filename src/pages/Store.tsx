@@ -14,7 +14,7 @@ export default function Store() {
     .list;
   console.log(products);
   return (
-    <div className="container">
+    <div className="Store">
       <div className="btns">
         <button className="btn" onClick={handleClick} value="Coffee">
           Coffee

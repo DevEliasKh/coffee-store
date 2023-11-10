@@ -8,7 +8,7 @@ function Home() {
   return (
     <div className="container">
       <div className="big-image">
-        <img src="./assets/bg.jpg" alt="coffee" />
+        <img src="src/assets/bg.jpg" alt="coffee" />
         <a href="/store">Shop Now!</a>
       </div>
 

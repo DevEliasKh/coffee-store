@@ -2,7 +2,7 @@ import './AboutUs.scss';
 
 export default function AboutUs() {
   return (
-    <div className="container">
+    <div className="AboutUs">
       <img src="src\assets\aboutUsFirst.jpg" alt="coffee" />
 
       <h1>
