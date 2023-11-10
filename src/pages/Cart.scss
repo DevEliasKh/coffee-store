@@ -1,0 +1,33 @@
+@import 'src/style/color.scss';
+
+.containerCart {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  gap: 1rem;
+  padding: 1rem;
+
+  .cardsOfCart {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1rem;
+    box-sizing: border-box;
+  }
+
+  .checkOut {
+    background-color: $primary-color;
+    font-size: 24px;
+    font-weight: 600;
+    border: 3px solid $secondary-color;
+    border-radius: 1rem;
+    position: sticky;
+    top: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .total {
+    white-space: nowrap;
+  }
+}

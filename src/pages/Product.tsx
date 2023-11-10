@@ -3,6 +3,7 @@ import productList from '../data/products.json';
 import './Product.scss';
 import useCartContext from '../context/CartContext.ts';
 import { useContext } from 'react';
+import { AddToCart } from '../lib/cart.ts';
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -10,7 +11,7 @@ export default function ProductPage() {
   const product = AllProduct.find((Element) => Element.id === id);
   const { Cart, UpdateCart } = useContext(useCartContext);
   function clickHandler() {
-    UpdateCart([...Cart, id]);
+    AddToCart(id, Cart, UpdateCart);
   }
   if (product) {
     return (
