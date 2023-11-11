@@ -17,8 +17,12 @@ export function RemoveFromCart(
   UpdateCart: props['UpdateCart']
 ) {
   const index = Cart.indexOf(id);
-  const newCart = Cart.slice(0, index - 1).concat(Cart.slice(index + 1));
-  UpdateCart(newCart);
+  if (index != -1) {
+    Cart.splice(index, 1);
+  }
+  const newCart = Cart;
+  UpdateCart([...newCart]);
+  console.log(Cart, newCart);
 }
 export function AddToCart(
   id: props['id'],

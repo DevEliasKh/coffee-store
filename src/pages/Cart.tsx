@@ -3,19 +3,28 @@ import CartContext from '../context/CartContext';
 import CartProductCard from '../component/CartProductCard';
 import productList from '../data/products.json';
 import './Cart.scss';
+import { Product } from '../model/product';
 
 export default function Cart() {
   const { Cart } = useContext(CartContext);
   const uniqCart = [...new Set(Cart)];
   const AllProduct = productList.flatMap((group) => group.list);
-  const product = AllProduct.find((Element) => Element.id === uniqCart[0]);
-  //   console.log(product);
+  const product: Product[] = [];
+  for (let i = 0; i < AllProduct.length; i++) {
+    const item = AllProduct.find((Element) => Element.id === uniqCart[i]);
+    if (item) {
+      product.push(item);
+    }
+  }
+  console.log(product);
   return (
     <>
       <div className="containerCart">
         <div className="cardsOfCart">
           {/* {#each $cartProductStore as product} */}
-          <CartProductCard product={product} />
+          {product.map((item) => {
+            return <CartProductCard product={item} key={item.id} />;
+          })}
           {/* {/each} */}
         </div>
         <div>
