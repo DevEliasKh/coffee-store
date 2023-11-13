@@ -1,3 +1,5 @@
+import Cart from '../pages/Cart';
+
 interface props {
   id: string;
   Cart: Map<string, number>;
@@ -5,12 +7,9 @@ interface props {
 }
 
 export function DecrementProductCount() {}
-export function IncrementProductCount(
-  id: props['id'],
-  Cart: props['Cart'],
-  UpdateCart: props['UpdateCart']
-) {
-  console.log(id);
+export function IncrementProductCount(Props: props) {
+  const { id, Cart, UpdateCart } = Props;
+
   let index;
   for (let i = 0; i < Cart.length; i++) {
     if (Cart[i][0] == id) {
@@ -27,11 +26,8 @@ export function IncrementProductCount(
 }
 export function GetProductCount() {}
 export function CalculateProductTotalCost() {}
-export function RemoveFromCart(
-  id: props['id'],
-  Cart: props['Cart'],
-  UpdateCart: props['UpdateCart']
-) {
+export function RemoveFromCart(Props: props) {
+  const { id, Cart, UpdateCart } = Props;
   for (let i = 0; i < Cart.length; i++) {
     const index = Cart[i].indexOf(id);
     if (index != -1) {
@@ -41,11 +37,9 @@ export function RemoveFromCart(
   const newCart = Cart;
   UpdateCart([...newCart]);
 }
-export function AddToCart(
-  id: props['id'],
-  Cart: props['Cart'],
-  UpdateCart: props['UpdateCart']
-) {
+export function AddToCart(Props: props) {
+  const { id, Cart, UpdateCart } = Props;
+
   Cart.map((item) => {
     if (item.indexOf(id) != 0) {
       IncrementProductCount(id, Cart, UpdateCart);
