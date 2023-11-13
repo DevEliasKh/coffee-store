@@ -1,10 +1,6 @@
-// import { useContext } from 'react';
-
-// import useCartContext from '../context/CartContext.ts';
-
 interface props {
   id: string;
-  Cart: Array<Array<string | number>>;
+  Cart: Map<string, number>;
   UpdateCart: (a: string[]) => void;
 }
 
@@ -14,16 +10,19 @@ export function IncrementProductCount(
   Cart: props['Cart'],
   UpdateCart: props['UpdateCart']
 ) {
+  console.log(id);
   let index;
   for (let i = 0; i < Cart.length; i++) {
     if (Cart[i][0] == id) {
       index = i;
     }
   }
-  if (index) {
-    let amount = Cart[index][1];
-    amount++;
-    UpdateCart([...Cart, [id, amount]]);
+  //   console.log(Cart);
+  if (index != undefined && index >= 0) {
+    const newCart = [...Cart];
+    let amount: number = Number(Cart[index][1]);
+    newCart.splice(index, 1);
+    UpdateCart([...newCart, [id, amount++]]);
   }
 }
 export function GetProductCount() {}
@@ -41,17 +40,17 @@ export function RemoveFromCart(
   }
   const newCart = Cart;
   UpdateCart([...newCart]);
-  console.log(Cart, newCart);
 }
 export function AddToCart(
   id: props['id'],
   Cart: props['Cart'],
   UpdateCart: props['UpdateCart']
 ) {
-  for (let i = 0; i < Cart.length; i++) {
-    if (Cart[i].indexOf(id) != -1) {
+  Cart.map((item) => {
+    if (item.indexOf(id) != 0) {
       IncrementProductCount(id, Cart, UpdateCart);
     }
-  }
+  });
+
   UpdateCart([...Cart, [id, 1]]);
 }

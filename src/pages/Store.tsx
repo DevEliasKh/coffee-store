@@ -12,7 +12,6 @@ export default function Store() {
 
   const products = productList.filter((p: ProductGroup) => p.type == type)[0]
     .list;
-  console.log(products);
   return (
     <div className="Store">
       <div className="btns">

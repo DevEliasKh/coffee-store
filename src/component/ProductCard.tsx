@@ -3,14 +3,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import useCartContext from '../context/CartContext.ts';
 import { AddToCart } from '../lib/cart.ts';
-
-interface Product {
-  id: string;
-  name: string;
-  imageSrc: string;
-  price: number;
-  description: string;
-}
+import type { Product } from '../model/product.ts';
 
 interface Props {
   product: Product;
