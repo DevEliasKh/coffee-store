@@ -10,13 +10,12 @@ export default function Cart() {
   const uniqCart = [...new Set(Cart)];
   const AllProduct = productList.flatMap((group) => group.list);
   const product: Product[] = [];
-  for (let i = 0; i < AllProduct.length; i++) {
-    const item = AllProduct.find((Element) => Element.id === uniqCart[i]);
+  for (let i = 0; i < uniqCart.length; i++) {
+    const item = AllProduct.find((Element) => Element.id == uniqCart[i][0]);
     if (item) {
       product.push(item);
     }
   }
-  console.log(product);
   return (
     <>
       <div className="containerCart">

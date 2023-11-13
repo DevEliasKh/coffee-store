@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 
 const CartContext = createContext({
-  Cart: [] as string[],
+  Cart: [] as Array<Array<string | number>>,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   UpdateCart: (_: string[]) => {}
 });
