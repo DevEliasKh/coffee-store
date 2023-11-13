@@ -24,7 +24,7 @@ export default function ProductCard(props: Props) {
       {/* the click event will be passed up to the parent */}
       <button
         onClick={() => {
-          AddToCart(id, Cart, UpdateCart);
+          AddToCart({ id, Cart, UpdateCart });
         }}
         className="button buy-now"
       >

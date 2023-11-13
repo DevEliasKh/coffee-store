@@ -1,5 +1,3 @@
-import Cart from '../pages/Cart';
-
 interface props {
   id: string;
   Cart: Map<string, number>;
@@ -40,11 +38,10 @@ export function RemoveFromCart(Props: props) {
 export function AddToCart(Props: props) {
   const { id, Cart, UpdateCart } = Props;
 
-  Cart.map((item) => {
+  Cart.map((item: Array<string | number>) => {
     if (item.indexOf(id) != 0) {
-      IncrementProductCount(id, Cart, UpdateCart);
+      IncrementProductCount({ id, Cart, UpdateCart });
     }
   });
-
   UpdateCart([...Cart, [id, 1]]);
 }
