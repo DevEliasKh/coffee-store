@@ -6,7 +6,23 @@ interface props {
   UpdateCart: (a: string[]) => void;
 }
 
-export function DecrementProductCount() {}
+export function DecrementProductCount(Props: props) {
+  const { id, Cart, UpdateCart } = Props;
+  let index;
+  for (let i = 0; i < Cart.length; i++) {
+    if (Cart[i][0] == id) {
+      index = i;
+    }
+  }
+  //   console.log(Cart);
+  if (index != undefined && index >= 0) {
+    const newCart = [...Cart];
+    let amount: number = Number(Cart[index][1]);
+    newCart.splice(index, 1);
+    UpdateCart([[id, --amount], ...newCart]);
+    console.log(Cart);
+  }
+}
 export function IncrementProductCount(Props: props) {
   const { id, Cart, UpdateCart } = Props;
 
@@ -70,9 +86,10 @@ export function AddToCart(Props: props) {
 export function getTotalCostOfAllProducts(Props: props) {
   let totalPriceCart = 0;
   const { Cart } = Props;
-  Cart.map((item) => {
-    console.log(item);
-    const itemPrice = CalculateProductTotalCost(item[0]);
+  const shadowCopy = [...Cart];
+  shadowCopy.map((item) => {
+    const id = item[0];
+    const itemPrice = CalculateProductTotalCost(id);
     if (itemPrice) {
       totalPriceCart = totalPriceCart + itemPrice;
     }

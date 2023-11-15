@@ -11,7 +11,9 @@ export default function ProductPage() {
   const product = AllProduct.find((Element) => Element.id === id);
   const { Cart, UpdateCart } = useContext(useCartContext);
   function clickHandler() {
-    AddToCart({ id, Cart, UpdateCart });
+    if (id) {
+      AddToCart({ id, Cart, UpdateCart });
+    }
   }
   if (product) {
     return (
