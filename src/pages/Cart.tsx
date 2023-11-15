@@ -1,12 +1,15 @@
 import { useContext } from 'react';
-import CartContext from '../context/CartContext';
+import useCartContext from '../context/CartContext.ts';
+
 import CartProductCard from '../component/CartProductCard';
 import productList from '../data/products.json';
 import './Cart.scss';
 import { Product } from '../model/product';
+import { getTotalCostOfAllProducts } from '../lib/cart';
 
 export default function Cart() {
-  const { Cart } = useContext(CartContext);
+  const { Cart, UpdateCart } = useContext(useCartContext);
+
   const uniqCart = [...new Set(Cart)];
   const AllProduct = productList.flatMap((group) => group.list);
   const product: Product[] = [];
@@ -20,20 +23,17 @@ export default function Cart() {
     <>
       <div className="containerCart">
         <div className="cardsOfCart">
-          {/* {#each $cartProductStore as product} */}
           {product.map((item) => {
             return <CartProductCard product={item} key={item.id} />;
           })}
-          {/* {/each} */}
         </div>
         <div>
           <div className="checkOut">
-            {/* {#key $cartProductCountStore} */}
             <div className="total">
-              Total:
-              {/* ${getTotalCostOfAllProducts().toFixed(2)} */}
+              Total: $
+              {/* {getTotalCostOfAllProducts({ Cart, UpdateCart }).toFixed(2)} */}
             </div>
-            {/* {/key} */}
+
             <h2>pay the way you like</h2>
           </div>
         </div>
