@@ -1,9 +1,10 @@
 import productList from '../data/products.json';
 
 interface props {
-  id: string;
-  Cart: Map<string, number>;
-  UpdateCart: (a: string[]) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  id: any;
+  Cart: Array<Array<string | number>>;
+  UpdateCart: (a: Array<Array<string | number>>) => void;
 }
 
 export function DecrementProductCount(Props: props) {
@@ -14,7 +15,7 @@ export function DecrementProductCount(Props: props) {
       index = i;
     }
   }
-  //   console.log(Cart);
+  console.log(Cart);
   if (index != undefined && index >= 0) {
     const newCart = [...Cart];
     let amount: number = Number(Cart[index][1]);
@@ -27,6 +28,7 @@ export function IncrementProductCount(Props: props) {
   const { id, Cart, UpdateCart } = Props;
 
   let index;
+
   for (let i = 0; i < Cart.length; i++) {
     if (Cart[i][0] == id) {
       index = i;
@@ -38,7 +40,6 @@ export function IncrementProductCount(Props: props) {
     let amount: number = Number(Cart[index][1]);
     newCart.splice(index, 1);
     UpdateCart([[id, ++amount], ...newCart]);
-    console.log(Cart);
   }
 }
 export function GetProductCount(Props: props) {
@@ -72,8 +73,7 @@ export function RemoveFromCart(Props: props) {
       Cart.splice(i, 1);
     }
   }
-  const newCart = Cart;
-  UpdateCart([...newCart]);
+  UpdateCart([...Cart]);
 }
 export function AddToCart(Props: props) {
   const { id, Cart, UpdateCart } = Props;
@@ -85,11 +85,12 @@ export function AddToCart(Props: props) {
 }
 export function getTotalCostOfAllProducts(Props: props) {
   let totalPriceCart = 0;
-  const { Cart } = Props;
+  const { Cart, UpdateCart } = Props;
+  console.log(Cart);
   const shadowCopy = [...Cart];
   shadowCopy.map((item) => {
-    const id = item[0];
-    const itemPrice = CalculateProductTotalCost(id);
+    const id: string | number = item[0];
+    const itemPrice = CalculateProductTotalCost({ id, Cart, UpdateCart });
     if (itemPrice) {
       totalPriceCart = totalPriceCart + itemPrice;
     }
