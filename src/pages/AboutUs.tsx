@@ -1,9 +1,11 @@
 import './AboutUs.scss';
+import aboutImage1 from '../assets/aboutUsFirst.jpg';
+import aboutImage2 from '../assets/aboutUsSecond.jpg';
 
 export default function AboutUs() {
   return (
     <div className="AboutUs">
-      <img src="src\assets\aboutUsFirst.jpg" alt="coffee" />
+      <img src={aboutImage1} alt="coffee" />
 
       <h1>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, rem
@@ -41,7 +43,7 @@ export default function AboutUs() {
         Pariatur, saepe ad. Ea, nobis quo.
       </p>
 
-      <img src="src/assets/aboutUsSecond.jpg" alt="coffee" />
+      <img src={aboutImage2} alt="coffee" />
     </div>
   );
 }

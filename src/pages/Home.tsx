@@ -3,12 +3,12 @@ import './Home.scss';
 import ProductCard from '../component/ProductCard.tsx';
 import productList from '../data/products.json';
 import type { Product, ProductGroup } from '../model/product.ts';
-
+import homePageImage from '../assets/bg.jpg';
 function Home() {
   return (
     <div className="container">
       <div className="big-image">
-        <img src="src/assets/bg.jpg" alt="coffee" />
+        <img src={homePageImage} alt="coffee" />
         <a href="/store">Shop Now!</a>
       </div>
 
