@@ -1,6 +1,9 @@
 import '../index.css';
 import './header.scss';
+import { useContext } from 'react';
+import useCartContext from '../context/CartContext.ts';
 export default function Header() {
+  const { Cart } = useContext(useCartContext);
   return (
     <nav className="navBar">
       <div className="link">
@@ -21,7 +24,7 @@ export default function Header() {
       </div>
       <div className="link">
         <a href="/cart">
-          <div className="item">2{/* {$cartProductStore.size} */}</div>
+          <div className="item">{Cart.length}</div>
           <div>Cart</div>
         </a>
       </div>
